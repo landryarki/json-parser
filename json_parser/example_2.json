@@ -1,0 +1,32 @@
+[
+  [
+    {
+      "id": "1",
+      "name": "me"
+    },
+    {
+      "id": "2",
+      "name": "you"
+    }
+  ],
+  {
+    "items": [
+      {
+        "id": "1",
+        "name": "sword",
+        "stats": {
+          "attack": 12,
+          "defense": 0
+        }
+      },
+      {
+        "id": "2",
+        "name": "shield",
+        "stats": {
+          "defense": 10,
+          "attack": 0
+        }
+      }
+    ]
+  }
+]
