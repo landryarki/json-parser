@@ -7,6 +7,7 @@
 
 SRC		=		json_create_props.c		\
 				json_manipulation.c		\
+				init_props.c	\
 				writer_json.c			\
 				my_put_nbr.c	\
 				my_puterr.c	\
@@ -30,4 +31,3 @@ fclean:		clean
 
 re:		fclean 	$(NAME)
 		rm -f $(OBJ)
-

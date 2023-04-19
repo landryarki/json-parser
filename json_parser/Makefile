@@ -39,4 +39,3 @@ fclean:		clean
 
 re:		fclean 	$(NAME)
 		rm -f $(OBJ)
-

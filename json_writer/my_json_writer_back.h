@@ -6,7 +6,7 @@
 */
 
 #ifndef MY_JSON_MY_JSON_WRITER_BACK_H
-#define MY_JSON_MY_JSON_WRITER_BACK_H
+    #define MY_JSON_MY_JSON_WRITER_BACK_H
 
     #include <stdio.h>
 
@@ -38,6 +38,7 @@ typedef struct json_props_s {
 
 json_props_t *json_create_props(char *key, int type, void *data);
 void append_json_object(json_props_t ***jsons, json_props_t *json);
+int find_json_object(json_props_t **json, char *key);
 
 void json_write_content(FILE *file, json_props_t *json, int depth);
 void json_write_key(FILE *file, json_props_t *json, int depth);
