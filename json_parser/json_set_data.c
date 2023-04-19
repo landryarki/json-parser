@@ -6,7 +6,7 @@
 */
 
 #include "my_json_parser_back.h"
-#include "../utilities/utilities.h"
+#include "utilities.h"
 #include <stdlib.h>
 
 int json_set_bool(json_file_t *fd)

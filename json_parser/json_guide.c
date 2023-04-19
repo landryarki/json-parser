@@ -6,7 +6,7 @@
 */
 
 #include "my_json_parser_back.h"
-#include "../utilities/utilities.h"
+#include "utilities.h"
 #include <stdlib.h>
 
 void json_close_guide(json_guide_t *guide)

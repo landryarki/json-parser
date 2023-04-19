@@ -17,9 +17,9 @@ SRC		=		advance_fd.c 	\
 				json_set_data_bis.c 	\
 				json_set_data.c 	\
 				parser_json.c		\
-				../utilities/my_put_nbr.c	\
-				../utilities/my_puterr.c	\
-				../utilities/my_strcat.c	\
+				my_put_nbr.c	\
+				my_puterr.c	\
+				my_strcat.c	\
 
 
 OBJ		=		$(SRC:.c=.o)

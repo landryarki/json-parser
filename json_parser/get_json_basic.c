@@ -6,7 +6,7 @@
 */
 
 #include "my_json_parser_back.h"
-#include "../utilities/utilities.h"
+#include "utilities.h"
 #include <stdlib.h>
 
 char *json_get_key(json_props_t *json)
