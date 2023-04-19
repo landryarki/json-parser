@@ -40,6 +40,8 @@ json_props_t *json_create_props(char *key, int type, void *data);
 void append_json_object(json_props_t ***jsons, json_props_t *json);
 int find_json_object(json_props_t **json, char *key);
 
+void json_write_file(char *name, json_props_t *json);
+
 void json_write_content(FILE *file, json_props_t *json, int depth);
 void json_write_key(FILE *file, json_props_t *json, int depth);
 void json_spacing(FILE *file, int depth);

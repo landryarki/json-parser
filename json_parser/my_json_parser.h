@@ -329,7 +329,7 @@ void json_close_guide(json_guide_t *guide);
 ////////////////////////////////////////////////////////////
 /// \brief destroy a json object and all the objects it contains
 ///
-/// \param json
+/// \param json object to destroy
 ////////////////////////////////////////////////////////////
 
 void json_destroy(json_props_t *json);
