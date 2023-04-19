@@ -49,7 +49,7 @@ char *json_get_string_from_array(json_props_t *json, int index)
         return NULL;
     if (tmp->type != JSON_STRING)
         return NULL;
-    return (char*)(tmp->data);
+    return my_strdup((char*)(tmp->data));
 }
 
 int json_get_int_from_array(json_props_t *json, int index)
@@ -79,5 +79,5 @@ json_props_t *json_get_object_from_array(json_props_t *json, int index)
         return NULL;
     if (tmp->type != JSON_OBJECT)
         return NULL;
-    return (json_props_t*)(tmp->data);
+    return tmp;
 }

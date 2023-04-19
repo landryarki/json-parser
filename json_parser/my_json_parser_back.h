@@ -85,6 +85,7 @@ int json_get_type_from_array(json_props_t *json, int index);
 int json_get_bool_from_array(json_props_t *json, int index);
 char *json_get_string_from_array(json_props_t *json, int index);
 int json_get_int_from_array(json_props_t *json, int index);
+int json_get_array_size(json_props_t *json);
 
 json_props_t *json_read_guide(json_guide_t *guide);
 json_guide_t *json_open_guide(json_props_t *json);

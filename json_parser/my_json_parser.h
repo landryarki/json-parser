@@ -258,6 +258,16 @@ char *json_get_string_from_array(json_props_t *array, int index);
 
 int json_get_bool_from_array(json_props_t *array, int index);
 
+////////////////////////////////////////////////////////////
+/// \brief get the size of an array
+///
+/// \param array
+/// \return the size of the array
+///
+////////////////////////////////////////////////////////////
+
+int json_get_array_size(json_array_t *array);
+
 /*-----------------------------*/
 
 /* Pour récupérer un objets indenté dans plusieurs objets
