@@ -5,15 +5,10 @@
 ** No file there , just an epitech header example .
 */
 
-#include "utilities.h"
-#include "my_json_parser.h"
+#include "../utilities/utilities.h"
+#include "my_json_parser_back.h"
 #include <unistd.h>
 #include <stdlib.h>
-
-void my_puterr(char *str)
-{
-    write(2, str, my_strlen(str));
-}
 
 void json_error_syntax(json_file_t *fd, char *wrong, char *expected)
 {

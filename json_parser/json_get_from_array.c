@@ -5,8 +5,8 @@
 ** No file there , just an epitech header example .
 */
 
-#include "my_json_parser.h"
-#include "utilities.h"
+#include "my_json_parser_back.h"
+#include "../utilities/utilities.h"
 #include <stdlib.h>
 
 int json_get_type_from_array(json_props_t *json, int index)

@@ -40,7 +40,7 @@ char *my_strdup(char *str)
     char *tmp = malloc(my_strlen(str) + 1);
     int i = 0;
 
-    if (tmp == NULL)
+    if (tmp == NULL || str == NULL)
         return NULL;
     for (; str[i] != 0; i++)
         tmp[i] = str[i];
