@@ -5,10 +5,12 @@
 ## A Makefile that compiles my json writer library
 ##
 
-SRC		=		json_create_props.c		\
+SRC		=		init_props.c	\
+				json_create_props.c		\
 				json_manipulation.c		\
-				init_props.c	\
+				json_manipulation_bis.c		\
 				writer_json.c			\
+				writer_json_bis.c		\
 				my_put_nbr.c	\
 				my_puterr.c	\
 				my_strcat.c	\
