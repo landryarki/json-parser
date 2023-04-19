@@ -49,4 +49,17 @@ void json_write_null(FILE *file, json_props_t *json, int depth);
 void json_write_array(FILE *file, json_props_t *json, int depth);
 void json_write_object(FILE *file, json_props_t *json, int depth);
 
+json_props_t *json_init_object(char *key);
+json_props_t *json_init_array(char *key);
+void json_add_int(json_props_t *json, char *key, int value);
+void json_add_string(json_props_t *json, char *key, char *value);
+void json_add_bool(json_props_t *json, char *key, int value);
+void json_add_null(json_props_t *json, char *key);
+void json_add_object(json_props_t *json, char *key, json_props_t *obj);
+void json_add_array(json_props_t *json, char *key, json_props_t *array);
+
+void json_remove_props(json_props_t *json, char *key);
+
+void json_destroy(json_props_t *json);
+
 #endif //MY_JSON_MY_JSON_WRITER_BACK_H

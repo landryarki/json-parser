@@ -8,6 +8,26 @@
 #include "my_json_writer_back.h"
 #include <stdlib.h>
 
+void json_destroy(json_props_t *json)
+{
+    json_props_t **child = NULL;
+
+    if (json == NULL)
+        return;
+    if (json->key != NULL)
+        free(json->key);
+    if (json->type == JSON_STRING && json->data != NULL)
+        free(json->data);
+    if ((json->type == JSON_OBJECT || json->type == JSON_ARRAY) &&
+        json->data != NULL) {
+        child = (json_props_t**)(json->data);
+        for (int i = 0; child[i] != NULL; i++)
+            json_destroy(child[i]);
+        free(child);
+    }
+    free(json);
+}
+
 void append_json_object(json_props_t ***jsons, json_props_t *json)
 {
     int i = 0;
