@@ -12,7 +12,7 @@
 void json_spacing(FILE *file, int depth)
 {
     for (int i = 0; i < depth; i++)
-        fprintf(file, "  ");
+        fwrite("  ", 1, 2, file);
 }
 
 void json_write_object(FILE *file, json_props_t *json, int depth)
@@ -80,9 +80,7 @@ void json_write_file(char *name, json_props_t *json)
     FILE *file = fopen(name, "w");
     int depth = 0;
 
-    if (file == NULL)
-        return;
-    if (json == NULL)
+    if (file == NULL || json == NULL)
         return;
     if (json->type != JSON_OBJECT && json->type != JSON_ARRAY)
         return;
@@ -92,12 +90,3 @@ void json_write_file(char *name, json_props_t *json)
     json->key = json_key;
     fclose(file);
 }
-
-//int main(void)
-//{
-//    json_props_t *json = json_create_from_file("example_1.json");
-//    json_write_file("new_example.json", json);
-//    json_destroy(json);
-//    json = json_create_from_file("new_example.json");
-//    return 0;
-//}

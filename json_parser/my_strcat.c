@@ -53,7 +53,7 @@ char *my_strdup_ij(char *str, int i, int j)
     char *tmp = malloc(j - i + 1);
     int k = 0;
 
-    if (tmp == NULL)
+    if (tmp == NULL || str == NULL)
         return NULL;
     for (; i < j; i++, k++)
         tmp[k] = str[i];
