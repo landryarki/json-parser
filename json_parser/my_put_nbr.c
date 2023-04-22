@@ -50,3 +50,17 @@ char *char_to_str(char c)
     str[1] = 0;
     return str;
 }
+
+int my_str_isnum(char *str)
+{
+    int i = 0;
+
+    if (str == NULL)
+        return 0;
+    if (str[0] == '-')
+        i++;
+    for (; str[i] != 0; i++)
+        if (str[i] < '0' || str[i] > '9')
+            return 0;
+    return 1;
+}

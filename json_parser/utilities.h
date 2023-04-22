@@ -17,5 +17,6 @@ char *my_strdup(char *str);
 char *my_strdup_ij(char *str, int i, int j);
 int my_getnbr(char *str);
 int my_strcmp(char *sa, char *sb);
+int my_str_isnum(char *str);
 
 #endif //B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_H

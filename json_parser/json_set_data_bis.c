@@ -26,7 +26,7 @@ void append_json_object(json_props_t ***jsons, json_props_t *json)
     *jsons = tmp;
 }
 
-void *json_set_data_switch(json_file_t *fd, int type, int* k)
+void *json_set_data_switch(json_file_t *fd, int type, int *k, int *good)
 {
     switch (type) {
         case JSON_OBJECT:
@@ -36,11 +36,11 @@ void *json_set_data_switch(json_file_t *fd, int type, int* k)
         case JSON_STRING:
             return json_set_string(fd);
         case JSON_BOOL:
-            k[0] = json_set_bool(fd); break;
+            good[0] = json_set_bool(fd); break;
         case JSON_NULL:
-            k[0] = json_set_null(fd); break;
+            good[0] = json_set_null(fd); break;
         case JSON_INT:
-            k[0] = json_set_int(fd); break;
+            k[0] = json_set_int(fd, good); break;
         case JSON_ERROR:
             json_error_unknown(fd, json_set_error(fd));
             return NULL;
@@ -53,19 +53,25 @@ void *json_set_data_switch(json_file_t *fd, int type, int* k)
 void *json_set_data(json_file_t *fd, int type)
 {
     int *k = malloc(sizeof(int));
+    int *good = malloc(sizeof(int));
     void *data = NULL;
-    if (k == NULL)
+    if (k == NULL || good == NULL)
         return NULL;
-    k[0] = -1;
-    data = json_set_data_switch(fd, type, k);
+    good[0] = -1;
+    data = json_set_data_switch(fd, type, k, good);
     if (data == NULL) {
-        if (k[0] == -1) {
+        if (good[0] == -1) {
+            free(good);
             free(k);
             return NULL;
         } else
+            free(good);
             return k;
-    } else
+    } else {
+        free(k);
+        free(good);
         return data;
+    }
 }
 
 static json_props_t **json_fill_object_loop(json_file_t *fd,

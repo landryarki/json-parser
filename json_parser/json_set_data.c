@@ -51,11 +51,11 @@ int json_set_null(json_file_t *fd)
     return 0;
 }
 
-int json_set_int(json_file_t *fd)
+int json_set_int(json_file_t *fd, int *good)
 {
     char *str = NULL;
     int i = fd->index;
-    int j = json_fd_reach_next_char(fd, " ,\n}", "0123456789");
+    int j = json_fd_reach_next_char(fd, " ,\n}", "-0123456789");
     int n = 0;
 
     if (j < 0)
@@ -63,6 +63,11 @@ int json_set_int(json_file_t *fd)
     str = my_strdup_ij(fd->str, i, i + j);
     if (str == NULL)
         return -1;
+    if (my_str_isnum(str) == 0) {
+        json_error_syntax(fd, str, "number");
+        return -1;
+    }
+    good[0] = 1;
     n = my_getnbr(str);
     free(str);
     return n;

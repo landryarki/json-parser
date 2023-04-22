@@ -64,7 +64,7 @@ int json_set_type(json_file_t *fd)
         case 'n':
             return JSON_NULL;
         default:
-            if (fd->str[fd->index] >= '0' && fd->str[fd->index] <= '9')
+            if ((fd->str[fd->index] >= '0' && fd->str[fd->index] <= '9') || fd->str[fd->index] == '-')
                 return JSON_INT;
             else
                 return JSON_ERROR;

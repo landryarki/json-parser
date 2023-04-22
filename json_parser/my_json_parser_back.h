@@ -63,7 +63,7 @@ char *json_set_key(json_file_t *fd);
 void *json_set_data(json_file_t *fd, int type);
 
 char *json_set_string(json_file_t *fd);
-int json_set_int(json_file_t *fd);
+int json_set_int(json_file_t *fd, int *good);
 int json_set_bool(json_file_t *fd);
 int json_set_null(json_file_t *fd);
 json_props_t **json_fill_object(json_file_t *fd);
