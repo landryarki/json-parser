@@ -71,17 +71,17 @@ int json_get_int(json_props_t *json, char *key)
 {
     json_props_t *tmp = NULL;
     if (json == NULL)
-        return -1;
+        return 0;
     if (key == NULL) {
         if (json->type != JSON_INT)
-            return -1;
+            return 0;
         else
             return *((int *) (json->data));
     }
     tmp = json_get_props(json, key);
     if (tmp == NULL)
-        return -1;
+        return 0;
     if (tmp->type != JSON_INT)
-        return -1;
+        return 0;
     return *((int*)(tmp->data));
 }
