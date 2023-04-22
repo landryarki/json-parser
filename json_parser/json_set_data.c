@@ -9,12 +9,11 @@
 #include "utilities.h"
 #include <stdlib.h>
 
-int json_set_bool(json_file_t *fd)
+int json_set_bool(json_file_t *fd, int *good)
 {
     char *str = NULL;
     int i = fd->index;
     int j = json_fd_reach_next_char(fd, " \n\t,}", NULL);
-
     if (j < 0)
         return -1;
     str = my_strdup_ij(fd->str, i, i + j);
@@ -22,9 +21,11 @@ int json_set_bool(json_file_t *fd)
         return -1;
     if (my_strcmp(str, "true") == 0) {
         free(str);
+        good[0] = 1;
         return 1;
     } else if (my_strcmp(str, "false") == 0) {
         free(str);
+        good[0] = 1;
         return 0;
     } else {
         json_error_syntax(fd, str, "true or false");
@@ -32,7 +33,7 @@ int json_set_bool(json_file_t *fd)
     }
 }
 
-int json_set_null(json_file_t *fd)
+int json_set_null(json_file_t *fd, int *good)
 {
     char *str = NULL;
     int i = fd->index;
@@ -47,6 +48,7 @@ int json_set_null(json_file_t *fd)
         json_error_syntax(fd, str, "null");
         return -1;
     }
+    good[0] = 1;
     free(str);
     return 0;
 }

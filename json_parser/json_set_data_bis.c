@@ -36,9 +36,9 @@ void *json_set_data_switch(json_file_t *fd, int type, int *k, int *good)
         case JSON_STRING:
             return json_set_string(fd);
         case JSON_BOOL:
-            good[0] = json_set_bool(fd); break;
+            k[0] = json_set_bool(fd, good); break;
         case JSON_NULL:
-            good[0] = json_set_null(fd); break;
+            k[0] = json_set_null(fd, good); break;
         case JSON_INT:
             k[0] = json_set_int(fd, good); break;
         case JSON_ERROR:
