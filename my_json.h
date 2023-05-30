@@ -277,7 +277,6 @@ int json_get_array_size(json_array_t *array);
  * elle prend en paramètre un objet json et un tableau de clé qui servira
  * de chemin pour trouver l'objet
  * USAGE:    json_find_object(obj, (char*[]){"window", "size", "width", NULL});
- * vous renvera l'objet width qui contien un INT (voir example_1.json)
  * */
 
 ////////////////////////////////////////////////////////////
