@@ -26,7 +26,4 @@ fclean:		clean
 		make fclean -C json_writer/
 		rm -f $(NAME)
 
-re:		fclean 	$(NAME)
-		make fclean -C json_parser/
-		make fclean -C json_writer/
-		rm -f *.o
+re:		fclean all

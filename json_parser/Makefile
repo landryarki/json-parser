@@ -32,10 +32,9 @@ $(NAME):	$(OBJ)
 		ar rc $(NAME) $(OBJ)
 
 clean:
-		rm -f *.o
+		rm -f $(OBJ)
 
 fclean:		clean
 		rm -f $(NAME)
 
 re:		fclean 	$(NAME)
-		rm -f $(OBJ)
