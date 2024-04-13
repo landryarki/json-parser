@@ -18,7 +18,8 @@ void json_destroy(json_props_t *json)
         return;
     if (json->key != NULL)
         free(json->key);
-    if (json->type == JSON_STRING && json->data != NULL)
+    if ((json->type != JSON_OBJECT && json->type != JSON_ARRAY) &&
+    json->data != NULL)
         free(json->data);
     if ((json->type == JSON_OBJECT || json->type == JSON_ARRAY) &&
     json->data != NULL) {

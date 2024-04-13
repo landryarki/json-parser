@@ -10,13 +10,20 @@
 
 char *my_put_nbr_to_str(int nb, int index)
 {
-    char *tmp = NULL;
+    char *tmp;
+    char *tmp2;
+    char *tmp3;
 
     if (nb < 0) {
-        tmp = my_strcat("-", my_put_nbr_to_str(-nb, index + 1));
+        tmp2 = my_put_nbr_to_str(-nb, index + 1);
+        tmp = my_strcat("-", tmp2);
+        free(tmp2);
     } else if (nb > 9) {
-        tmp = my_strcat(my_put_nbr_to_str(nb / 10, index + 1),
-                        my_put_nbr_to_str(nb % 10, index + 1));
+        tmp2 = my_put_nbr_to_str(nb / 10, index + 1);
+        tmp3 = my_put_nbr_to_str(nb % 10, index + 1);
+        tmp = my_strcat(tmp2, tmp3);
+        free(tmp2);
+        free(tmp3);
     } else {
         return char_to_str(nb + '0');
     }

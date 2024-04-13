@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 json_props_t *json_create_props(char *key, int type, void *data)
 {
@@ -82,14 +83,22 @@ json_props_t *json_set_props(json_file_t *fd)
     json_props_t *json = json_create_props(NULL, -1, NULL);
 
     json->key = json_set_key(fd);
-    if (json->key == NULL)
+    if (json->key == NULL) {
+        free(json);
         return NULL;
-    if (json_fd_reach_next_char(fd, ":", " \n\t") < 0)
+    }
+    if (json_fd_reach_next_char(fd, ":", " \n\t") < 0) {
+        free(json->key);
+        free(json);
         return NULL;
+    }
     json->type = json_set_type(fd);
     json->data = json_set_data(fd, json->type);
-    if (json->data == NULL)
+    if (json->data == NULL) {
+        free(json->key);
+        free(json);
         return NULL;
+    }
     return json;
 }
 
@@ -99,16 +108,15 @@ json_props_t *json_create_from_file(char *path)
             (my_strdup(path), JSON_ERROR, NULL);
     json_file_t *fd = json_open_file(my_strdup(path));
 
-    if (fd == NULL || fd->size == 0)
+    if (fd == NULL || fd->size == 0 ||
+    json_fd_reach_next_char(fd, "{[", " \n\t") < 0) {
+        json_close_file(fd);
+        free(json);
         return NULL;
-    if (json_fd_reach_next_char(fd, "{[", " \n\t") < 0)
-        return NULL;
-    if (fd->str[fd->index] == '{') {
-        json->type = JSON_OBJECT;
-        json->data = json_fill_object(fd);
-    } else if (fd->str[fd->index] == '[') {
-        json->type = JSON_ARRAY;
-        json->data = json_fill_array(fd);
+    }
+    if (fd->str[fd->index] == '{' || fd->str[fd->index] == '[') {
+        json->type = json_fd_set_type_switch(fd->str[fd->index]);
+        json->data = json_set_data(fd, json->type);
     } else
         return NULL;
     if (json->data == NULL)

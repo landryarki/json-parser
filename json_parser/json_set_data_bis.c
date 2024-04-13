@@ -56,12 +56,12 @@ void *json_set_data(json_file_t *fd, int type)
     good[0] = -1;
     data = json_set_data_switch(fd, type, k, good);
     if (data == NULL) {
-        if (good[0] == -1) {
+        if (good[0] != 1) {
             free(good);
             free(k);
             return NULL;
-        } else
-            free(good);
+        }
+        free(good);
         return k;
     }
     free(k);
