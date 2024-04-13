@@ -20,7 +20,7 @@ void json_destroy(json_props_t *json)
         free(json->data);
     if ((json->type == JSON_OBJECT || json->type == JSON_ARRAY) &&
         json->data != NULL) {
-        child = (json_props_t**)(json->data);
+        child = (json_props_t **)(json->data);
         for (int i = 0; child[i] != NULL; i++)
             json_destroy(child[i]);
         free(child);

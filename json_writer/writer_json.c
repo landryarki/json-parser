@@ -79,12 +79,13 @@ void json_write_file(char *name, json_props_t *json)
 {
     FILE *file = fopen(name, "w");
     int depth = 0;
+    char *json_key = NULL;
 
     if (file == NULL || json == NULL)
         return;
     if (json->type != JSON_OBJECT && json->type != JSON_ARRAY)
         return;
-    char *json_key = json->key;
+    json_key = json->key;
     json->key = NULL;
     json_write_content(file, json, depth);
     json->key = json_key;

@@ -31,15 +31,21 @@ void json_add_array(json_props_t *json, char *key, json_props_t *array)
     append_json_object((json_props_t ***)(&(json->data)), array);
 }
 
+static void json_alloc_new_array(json_props_t *json, int i)
+{
+    for (; ((json_props_t **)json->data)[i] != NULL; i++);
+    return malloc(sizeof(json_props_t *) * (i + 1));
+}
+
 void json_remove_props(json_props_t *json, char *key)
 {
-    json_props_t **tmp = NULL;
+    json_props_t **tmp;
     int i = 0;
     int j = 0;
+
     if (json->type != JSON_OBJECT && json->type != JSON_ARRAY)
         return;
-    for (; ((json_props_t **)json->data)[i] != NULL; i++);
-    tmp = malloc(sizeof(json_props_t *) * (i + 1));
+    tmp = json_alloc_new_array(json, i);
     if (tmp == NULL)
         return;
     for (int k = 0; k < i; k++) {
