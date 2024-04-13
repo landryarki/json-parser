@@ -55,8 +55,10 @@ char *my_strdup_ij(char *str, int i, int j)
 
     if (tmp == NULL || str == NULL)
         return NULL;
-    for (; i < j; i++, k++)
+    for (; i < j; i++) {
         tmp[k] = str[i];
+        k++;
+    }
     tmp[k] = 0;
     return tmp;
 }

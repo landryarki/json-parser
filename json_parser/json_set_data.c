@@ -14,6 +14,7 @@ int json_set_bool(json_file_t *fd, int *good)
     char *str = NULL;
     int i = fd->index;
     int j = json_fd_reach_next_char(fd, " \n\t,}", NULL);
+
     if (j < 0)
         return -1;
     str = my_strdup_ij(fd->str, i, i + j);
@@ -27,10 +28,9 @@ int json_set_bool(json_file_t *fd, int *good)
         free(str);
         good[0] = 1;
         return 0;
-    } else {
-        json_error_syntax(fd, str, "true or false");
-        return -1;
     }
+    json_error_syntax(fd, str, "true or false");
+    return -1;
 }
 
 int json_set_null(json_file_t *fd, int *good)

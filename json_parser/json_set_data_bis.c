@@ -28,25 +28,20 @@ void append_json_object(json_props_t ***jsons, json_props_t *json)
 
 void *json_set_data_switch(json_file_t *fd, int type, int *k, int *good)
 {
-    switch (type) {
-        case JSON_OBJECT:
-            return json_fill_object(fd);
-        case JSON_ARRAY:
-            return json_fill_array(fd);
-        case JSON_STRING:
-            return json_set_string(fd);
-        case JSON_BOOL:
-            k[0] = json_set_bool(fd, good); break;
-        case JSON_NULL:
-            k[0] = json_set_null(fd, good); break;
-        case JSON_INT:
-            k[0] = json_set_int(fd, good); break;
-        case JSON_ERROR:
-            json_error_unknown(fd, json_set_error(fd));
-            return NULL;
-        default:
-            break;
-    }
+    if (type == JSON_OBJECT)
+        return json_fill_object(fd);
+    if (type == JSON_ARRAY)
+        return json_fill_array(fd);
+    if (type == JSON_STRING)
+        return json_set_string(fd);
+    if (type == JSON_BOOL)
+        k[0] = json_set_bool(fd, good);
+    if (type == JSON_NULL)
+        k[0] = json_set_null(fd, good);
+    if (type == JSON_INT)
+        k[0] = json_set_int(fd, good);
+    if (type == JSON_ERROR)
+        json_error_unknown(fd, json_set_error(fd));
     return NULL;
 }
 
@@ -55,6 +50,7 @@ void *json_set_data(json_file_t *fd, int type)
     int *k = malloc(sizeof(int));
     int *good = malloc(sizeof(int));
     void *data = NULL;
+
     if (k == NULL || good == NULL)
         return NULL;
     good[0] = -1;
@@ -66,16 +62,15 @@ void *json_set_data(json_file_t *fd, int type)
             return NULL;
         } else
             free(good);
-            return k;
-    } else {
-        free(k);
-        free(good);
-        return data;
+        return k;
     }
+    free(k);
+    free(good);
+    return data;
 }
 
 static json_props_t **json_fill_object_loop(json_file_t *fd,
-json_props_t **jsons, int actual)
+    json_props_t **jsons, int actual)
 {
     json_props_t *tmp = NULL;
 
@@ -83,7 +78,7 @@ json_props_t **jsons, int actual)
         tmp = json_set_props(fd);
         if (tmp == NULL)
             return NULL;
-        append_json_object(&jsons,tmp);
+        append_json_object(&jsons, tmp);
         if (json_fd_reach_next_char(fd, ",}", " \n\t") < 0)
             return NULL;
         json_fd_advance_index(fd, 1);

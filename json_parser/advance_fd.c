@@ -62,8 +62,7 @@ int json_fd_reach_next_char(json_file_t *fd, char *delim, char *ignore)
 {
     if (delim == NULL && ignore == NULL)
         return 0;
-    for (int i = 0; fd->str[fd->index] != 0;
-    json_fd_advance_index(fd, 1), i++) {
+    for (int i = 0; fd->str[fd->index] != 0; i++) {
         if (delim != NULL && char_in_str(fd->str[fd->index], delim))
             return i;
         if (delim == NULL && ignore != NULL &&
@@ -71,6 +70,7 @@ int json_fd_reach_next_char(json_file_t *fd, char *delim, char *ignore)
             return i;
         if (ignore != NULL && !(char_in_str(fd->str[fd->index], ignore)))
             break;
+        json_fd_advance_index(fd, 1);
     }
     json_error_syntax(fd, char_to_str(fd->str[fd->index]), delim);
     return -1;

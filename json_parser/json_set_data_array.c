@@ -9,7 +9,7 @@
 #include "utilities.h"
 #include <stdlib.h>
 
-void append_json_object(json_props_t ***jsons, json_props_t *json);
+
 
 static json_props_t *json_set_props_to_array(json_file_t *fd)
 {
@@ -24,7 +24,7 @@ static json_props_t *json_set_props_to_array(json_file_t *fd)
 }
 
 static json_props_t **json_fill_array_loop(json_file_t *fd,
-json_props_t **jsons, int actual)
+    json_props_t **jsons, int actual)
 {
     json_props_t *tmp = NULL;
 
@@ -32,7 +32,7 @@ json_props_t **jsons, int actual)
         tmp = json_set_props_to_array(fd);
         if (tmp == NULL)
             return NULL;
-        append_json_object(&jsons,tmp);
+        append_json_object(&jsons, tmp);
         if (json_fd_reach_next_char(fd, ",]", " \n\t") < 0)
             return NULL;
         json_fd_advance_index(fd, 1);

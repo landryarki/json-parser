@@ -22,7 +22,7 @@ void json_destroy(json_props_t *json)
         free(json->data);
     if ((json->type == JSON_OBJECT || json->type == JSON_ARRAY) &&
     json->data != NULL) {
-        child = (json_props_t**)(json->data);
+        child = (json_props_t **)(json->data);
         for (int i = 0; child[i] != NULL; i++)
             json_destroy(child[i]);
         free(child);
@@ -38,7 +38,7 @@ json_props_t *json_get_props(json_props_t *json, char *key)
         return NULL;
     if (json->type != JSON_OBJECT)
         return NULL;
-    child = (json_props_t**)(json->data);
+    child = (json_props_t **)(json->data);
     for (int i = 0; child[i] != NULL; i++) {
         if (my_strcmp(child[i]->key, key) == 0)
             return child[i];
@@ -70,7 +70,7 @@ json_props_t *json_get_props_from_array(json_props_t *array, int index)
         return NULL;
     if (array->type != JSON_OBJECT && array->type != JSON_ARRAY)
         return NULL;
-    child = (json_props_t**)(array->data);
+    child = (json_props_t **)(array->data);
     for (; child[len] != NULL; len++);
     if (index < 0 || index >= len) {
         json_error_index_out_of_range(array->key, index);

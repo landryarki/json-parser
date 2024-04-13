@@ -12,6 +12,7 @@
 int json_get_type_from_array(json_props_t *json, int index)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return -1;
     if (index < 0)
@@ -25,6 +26,7 @@ int json_get_type_from_array(json_props_t *json, int index)
 int json_get_bool_from_array(json_props_t *json, int index)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return -1;
     if (index < 0)
@@ -34,12 +36,13 @@ int json_get_bool_from_array(json_props_t *json, int index)
         return -1;
     if (tmp->type != JSON_BOOL)
         return -1;
-    return *((int*)(tmp->data));
+    return *((int *)(tmp->data));
 }
 
 char *json_get_string_from_array(json_props_t *json, int index)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return NULL;
     if (index < 0)
@@ -49,12 +52,13 @@ char *json_get_string_from_array(json_props_t *json, int index)
         return NULL;
     if (tmp->type != JSON_STRING)
         return NULL;
-    return my_strdup((char*)(tmp->data));
+    return my_strdup((char *)(tmp->data));
 }
 
 int json_get_int_from_array(json_props_t *json, int index)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return -1;
     if (index < 0)
@@ -64,12 +68,13 @@ int json_get_int_from_array(json_props_t *json, int index)
         return -1;
     if (tmp->type != JSON_INT)
         return -1;
-    return *((int*)(tmp->data));
+    return *((int *)(tmp->data));
 }
 
 json_props_t *json_get_object_from_array(json_props_t *json, int index)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return NULL;
     if (index < 0)

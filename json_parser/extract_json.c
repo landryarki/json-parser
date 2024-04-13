@@ -13,9 +13,9 @@
 static json_file_t *json_create_file(char *str, char *path)
 {
     json_file_t *file = malloc(sizeof(json_file_t));
+
     if (file == NULL)
         return NULL;
-
     file->line = 1;
     file->column = 1;
     file->depth = 0;

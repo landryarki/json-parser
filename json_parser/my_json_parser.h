@@ -154,11 +154,11 @@ int json_get_type(json_props_t *json, char *key);
 /*-----------------------------*/
 
 /* Pour récupérer la valeur d'un objet "complexe" il y a ces fonctions
- * qui prennent en paramètre un objet json et retourne un autre objet json
+ * qui prennent en paramètre un objet json et retourne un autre objet json.
  * */
 
 /* json_get_object prend en paramètre un objet json et une clé et retourne
- * l'objet json qui a cette clé
+ * l'objet json qui a cette clé.
  * */
 
 ////////////////////////////////////////////////////////////
@@ -291,12 +291,12 @@ json_props_t *json_find_object(json_props_t *json, char **keys);
 /*-----------------------------*/
 
 /* Maintenant il y a les guides qui permettent de parcourir un objet json
- * d'une manière plus simple mais différentes des fonctions précédentes
+ * d'une manière plus simple mais différentes des fonctions précédentes.
  * */
 
 /* Un guide ne s'ouvre que sur des objets "complexe" (ARRAY ou OBJECT)
  * il a en paramètre l'objet json qu'il va parcourir et un index, et la taille
- * de l'objet json qui lui est passé
+ * de l'objet json qui lui est passé.
  * */
 
 typedef struct json_guide_s {

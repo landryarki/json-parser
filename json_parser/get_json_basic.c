@@ -19,6 +19,7 @@ char *json_get_key(json_props_t *json)
 int json_get_type(json_props_t *json, char *key)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return -1;
     if (key == NULL)
@@ -32,6 +33,7 @@ int json_get_type(json_props_t *json, char *key)
 int json_get_bool(json_props_t *json, char *key)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return -1;
     if (key == NULL) {
@@ -45,31 +47,33 @@ int json_get_bool(json_props_t *json, char *key)
         return -1;
     if (tmp->type != JSON_BOOL)
         return -1;
-    return *((int*)(tmp->data));
+    return *((int *)(tmp->data));
 }
 
 char *json_get_string(json_props_t *json, char *key)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return NULL;
     if (key == NULL) {
         if (json->type != JSON_STRING)
             return NULL;
         else
-            return (char*)(json->data);
+            return (char *)(json->data);
     }
     tmp = json_get_props(json, key);
     if (tmp == NULL)
         return NULL;
     if (tmp->type != JSON_STRING)
         return NULL;
-    return my_strdup((char*)(tmp->data));
+    return my_strdup((char *)(tmp->data));
 }
 
 int json_get_int(json_props_t *json, char *key)
 {
     json_props_t *tmp = NULL;
+
     if (json == NULL)
         return 0;
     if (key == NULL) {
@@ -83,5 +87,5 @@ int json_get_int(json_props_t *json, char *key)
         return 0;
     if (tmp->type != JSON_INT)
         return 0;
-    return *((int*)(tmp->data));
+    return *((int *)(tmp->data));
 }

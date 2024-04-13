@@ -69,6 +69,8 @@ json_props_t **json_fill_object(json_file_t *fd);
 json_props_t **json_fill_array(json_file_t *fd);
 char *json_set_error(json_file_t *fd);
 
+void append_json_object(json_props_t ***jsons, json_props_t *json);
+
 char *json_get_key(json_props_t *json);
 int json_get_type(json_props_t *json, char *key);
 int json_get_bool(json_props_t *json, char *key);
