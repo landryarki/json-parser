@@ -5,8 +5,7 @@
 ** No file there , just an epitech header example .
 */
 
-#ifndef MY_JSON_MY_JSON_WRITER_H
-    #define MY_JSON_MY_JSON_WRITER_H
+#pragma once
 
 /* Un props json a un type qui définit la valeur
  * qu'il va contenir, il a aussi une clé dans la plus part des cas qui va
@@ -206,5 +205,3 @@ void json_remove_props(json_props_t *json, char *key);
 ////////////////////////////////////////////////////////////
 
 void json_destroy(json_props_t *json);
-
-#endif //MY_JSON_MY_JSON_WRITER_H

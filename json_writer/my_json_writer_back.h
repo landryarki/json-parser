@@ -5,8 +5,7 @@
 ** No file there , just an epitech header example .
 */
 
-#ifndef MY_JSON_MY_JSON_WRITER_BACK_H
-    #define MY_JSON_MY_JSON_WRITER_BACK_H
+#pragma once
 
     #include <stdio.h>
 
@@ -64,5 +63,3 @@ void json_add_array(json_props_t *json, char *key, json_props_t *array);
 void json_remove_props(json_props_t *json, char *key);
 
 void json_destroy(json_props_t *json);
-
-#endif //MY_JSON_MY_JSON_WRITER_BACK_H

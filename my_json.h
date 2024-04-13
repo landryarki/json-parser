@@ -157,11 +157,10 @@ int json_get_type(json_props_t *json, char *key);
 /*-----------------------------*/
 
 /* Pour récupérer la valeur d'un objet "complexe" il y a ces fonctions
- * qui prennent en paramètre un objet json et retourne un autre objet json
+ * qui prennent en paramètre un objet json et retourne un autre objet json.
  * */
-
 /* json_get_object prend en paramètre un objet json et une clé et retourne
- * l'objet json qui a cette clé
+ * l'objet json qui a cette clé.
  * */
 
 ////////////////////////////////////////////////////////////
@@ -293,12 +292,12 @@ json_props_t *json_find_object(json_props_t *json, char **keys);
 /*-----------------------------*/
 
 /* Maintenant il y a les guides qui permettent de parcourir un objet json
- * d'une manière plus simple mais différentes des fonctions précédentes
+ * d'une manière plus simple mais différentes des fonctions précédentes.
  * */
 
 /* Un guide ne s'ouvre que sur des objets "complexe" (ARRAY ou OBJECT)
  * il a en paramètre l'objet json qu'il va parcourir et un index, et la taille
- * de l'objet json qui lui est passé
+ * de l'objet json qui lui est passé.
  * */
 
 typedef struct json_guide_s {
@@ -308,7 +307,7 @@ typedef struct json_guide_s {
 } json_guide_t;
 
 /* Pour ouvrir un guide il faut utiliser la fonction json_open_guide
- * qui prend en paramètre un objet json et retourne un guide
+ * qui prend en paramètre un objet json et retourne un guide.
  * */
 
 json_guide_t *json_open_guide(json_props_t *json);
@@ -319,7 +318,7 @@ json_guide_t *json_open_guide(json_props_t *json);
  * jusqu'a ce que la fonction retourne NULL...
  * en d'autre terme, la fonction guide est a utiliser plusieurs fois tant qu'il
  * y a des objets a parcourir, et renverra toujours un nouvel sous objet json
- * appartenant a l'objet json du guide
+ * appartenant a l'objet json du guide.
  * */
 
 json_props_t *json_read_guide(json_guide_t *guide);
@@ -454,7 +453,7 @@ void json_add_array(json_props_t *json, char *key, json_props_t *value);
 /*-----------------------------*/
 
 /* Pour pouvoir retirer des props d'un objet ou un tableau json, il faut
- * utiliser la fonction suivante
+ * utiliser la fonction suivante.
  * */
 
 ////////////////////////////////////////
@@ -470,7 +469,7 @@ void json_remove_props(json_props_t *json, char *key);
 /*-----------------------------*/
 
 /* Pour libérer la mémoire allouée par la structure json, et la détruire
- * il faut utiliser la fonction suivante
+ * il faut utiliser la fonction suivante.
  * */
 
 ////////////////////////////////////////////////////////////

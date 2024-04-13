@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2023
-** B-MUL-200-NAN-2-1-myrpg-marius.pain
+** my_json
 ** File description:
 ** No file there , just an epitech header example .
 */

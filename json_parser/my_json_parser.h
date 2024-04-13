@@ -5,8 +5,7 @@
 ** No file there , just an epitech header example .
 */
 
-#ifndef B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_JSON_H
-    #define B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_JSON_H
+#pragma once
 
 /* Un props json a un type qui définit la valeur
  * qu'il va contenir, il a aussi une clé dans la plus part des cas qui va
@@ -343,5 +342,3 @@ void json_close_guide(json_guide_t *guide);
 ////////////////////////////////////////////////////////////
 
 void json_destroy(json_props_t *json);
-
-#endif //B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_JSON_H

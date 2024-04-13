@@ -5,8 +5,7 @@
 ** No file there , just an epitech header example .
 */
 
-#ifndef B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_PARSER_JSON_H
-    #define B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_PARSER_JSON_H
+#pragma once
 
 typedef struct json_file_s {
     char *path;
@@ -92,5 +91,3 @@ json_guide_t *json_open_guide(json_props_t *json);
 void json_close_guide(json_guide_t *guide);
 
 void json_destroy(json_props_t *json);
-
-#endif //B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_PARSER_JSON_H

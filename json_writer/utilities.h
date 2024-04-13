@@ -1,12 +1,13 @@
 /*
 ** EPITECH PROJECT, 2023
-** B-MUL-200-NAN-2-1-myrpg-marius.pain
+** my_json
 ** File description:
 ** No file there , just an epitech header example .
 */
 
-#ifndef B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_H
-    #define B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_H
+#pragma once
+
+#include <stdlib.h>
 
 int my_strlen(char *str);
 char *my_strcat(char *sa, char *sb);
@@ -18,5 +19,3 @@ char *my_strdup_ij(char *str, int i, int j);
 int my_getnbr(char *str);
 int my_strcmp(char *sa, char *sb);
 int my_str_isnum(char *str);
-
-#endif //B_MUL_200_NAN_2_1_MYRPG_MARIUS_PAIN_MY_H

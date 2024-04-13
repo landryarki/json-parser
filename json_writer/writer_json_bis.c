@@ -30,17 +30,20 @@ void json_write_string(FILE *file, json_props_t *json, int depth)
 
 void json_write_int(FILE *file, json_props_t *json, int depth)
 {
+    char *str = NULL;
+
     json_spacing(file, depth);
     json_write_key(file, json, depth);
-    char *str = my_put_nbr_to_str(*((int*)json->data), 0);
+    str = my_put_nbr_to_str(*((int *)json->data), 0);
     fwrite(str, 1, my_strlen(str), file);
+    free(str);
 }
 
 void json_write_bool(FILE *file, json_props_t *json, int depth)
 {
     json_spacing(file, depth);
     json_write_key(file, json, depth);
-    if (*((int*)json->data) == 1)
+    if (*((int *)json->data) == 1)
         fwrite("true", 1, 4, file);
     else
         fwrite("false", 1, 5, file);
