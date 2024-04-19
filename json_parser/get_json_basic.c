@@ -67,7 +67,7 @@ char *json_get_string(json_props_t *json, char *key)
         return NULL;
     if (tmp->type != JSON_STRING)
         return NULL;
-    return my_strdup((char *)(tmp->data));
+    return (char *)(tmp->data);
 }
 
 int json_get_int(json_props_t *json, char *key)
